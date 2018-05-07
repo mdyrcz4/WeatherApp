@@ -1,5 +1,5 @@
 const yargs = require('yargs');
-
+require('dotenv').load();
 const geocode = require('./geocode/geocode');
 const weather = require('./weather/weather');
 
@@ -25,7 +25,7 @@ geocode.geocodeAddress(argv.address, (errorMessage,results) => {
             if(errorMessage){
                 console.log(errorMessage);
             }else {
-                console.log(`It's currently: ${(weatherResults.temperature-32)*5/9}. It feels like ${(weatherResults.apparentTemperature-32)*5/9}.`);
+                console.log(`It's currently: ${((weatherResults.temperature-32)*5/9).toFixed(2)}. It feels like ${((weatherResults.apparentTemperature-32)*5/9).toFixed(2)}.`);
             }
         });
     }
